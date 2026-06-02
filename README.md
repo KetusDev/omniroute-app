@@ -1,19 +1,17 @@
 <div align="center">
 
-<img src="https://omniroute.cloud/logo.png" alt="OmniRoute Logo" width="120" />
-
 # OmniRoute
 
 ### Next-gen platform for Virtual Trucking Companies
 
 [![Status](https://img.shields.io/badge/Status-Closed%20Beta-7C6FCD?style=for-the-badge)](https://omniroute.cloud)
 [![Website](https://img.shields.io/badge/Website-omniroute.cloud-0A0A0F?style=for-the-badge&logo=firefox&logoColor=white)](https://omniroute.cloud)
-[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/omniroute)
+[![Discord](https://img.shields.io/badge/Discord-Join%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://discord.omniroute.cloud)
 [![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)](./LICENSE)
 
 **Automatic trip tracking for ETS2 & ATS Virtual Trucking Companies — no manual reporting, ever.**
 
-[🌐 Website](https://omniroute.cloud) · [📋 Changelog](#-changelog) · [🗺️ Roadmap](#️-roadmap)
+[🌐 Website](https://omniroute.cloud) · [💬 Discord](https://discord.omniroute.cloud) · [📋 Changelog](./CHANGELOG) · [🗺️ Roadmap](#️-roadmap)
 
 </div>
 
@@ -38,22 +36,24 @@ It supports both **singleplayer** and **TruckersMP multiplayer**, handles edge c
 ### 🖥️ Desktop Client (Tauri 2)
 - Automatic trip detection via **SCS SDK shared memory**
 - Real-time telemetry: position, speed, fuel, cargo damage
-- Smart state machine: Loading → Active → Delivered
-- Handles ferry crossings, F7 teleports, save/loads
-- Anti-cheat: suspicious job detection
-- Encrypted local storage (AES-256-GCM)
+- Smart state machine: Loading → Active → Completing → Delivered
+- Handles ferry crossings, F7 teleports, save/loads gracefully
+- Anti-cheat: position-based suspicion score
+- Encrypted local storage (AES-256-GCM + Windows DPAPI)
 - Suspend & resume on game close / profile switch
+- NSIS/MSI installer with auto-updater
 
 </td>
 <td width="50%" valign="top">
 
 ### 🌐 Web Platform (Next.js)
 - Full VTC management dashboard
-- Company ranks, badges, webhooks
-- Driver profiles & activity tracking
-- Discord OAuth2 integration
-- TruckersMP & Steam account linking
-- Interactive route map (MapLibre GL)
+- Company ranks, badges, webhooks, name history
+- Driver profiles, public pages & activity tracking
+- Discord OAuth2 + Steam + TruckersMP account linking
+- Invitation & application system
+- Interactive game map with route visualization
+- Economy dashboard with PDF/CSV export
 - Polish 🇵🇱 & English 🇬🇧 localization
 
 </td>
@@ -62,63 +62,28 @@ It supports both **singleplayer** and **TruckersMP multiplayer**, handles edge c
 <td width="50%" valign="top">
 
 ### ⚙️ API (Fastify 4)
-- RESTful API with cookie-based sessions
-- Admin panel & system roles
-- Discord bot integration via webhook
-- Company settings: 8 configuration tabs
-- Cloudflare R2 for media storage
+- RESTful API with httpOnly cookie sessions
+- Role hierarchy: FOUNDER → MODERATOR → SUPPORT → USER
+- Discord-gated registration with role verification
+- Discord webhook dispatcher (job completions, member events)
+- Redis for rate limiting, stats cache, JWT blacklist
+- Cloudflare Turnstile enforcement
 - BetterStack status monitoring
 
 </td>
 <td width="50%" valign="top">
 
 ### 🤖 Discord Bot (Discord.js v14)
-- VTC notifications & announcements
-- Trip delivery alerts
+- Verification system with two-step embed panel
+- Country & language role assignment
+- Announcements system
+- Discord DM notifications for job deliveries
 - Company leaderboards
-- Role sync with web platform
 - Webhook-driven event system
 
 </td>
 </tr>
 </table>
-
----
-
-## 🏗️ Architecture
-
-OmniRoute is a **pnpm monorepo** powered by Turborepo, consisting of four apps and a shared packages layer:
-
-```
-omniroute/
-├── apps/
-│   ├── web/          # Next.js 14 — web platform (App Router, next-intl)
-│   ├── api/          # Fastify 4 — REST API
-│   ├── desktop/      # Tauri 2 — desktop client (Rust + React)
-│   └── bot/          # Discord.js v14 — Discord bot
-└── packages/
-    └── database/     # Prisma 5 + PostgreSQL 16 (shared schema)
-```
-
-### Desktop Telemetry Pipeline
-
-```
-ETS2/ATS Game
-     │
-     │  SCS SDK Plugin (shared memory)
-     ▼
- Tauri Desktop App (Rust)
-     │
-     ├── TelemetryReader (100ms polling)
-     ├── StateMachine (Idle → Loading → Active → Ending)
-     ├── DistanceIntegrator (world position, teleport guard)
-     ├── DeliveryClassifier (SP vs TruckersMP)
-     └── RouteRecorder (GPS points → RDP simplification)
-     │
-     │  HTTP (submit + route)
-     ▼
-  Fastify API → PostgreSQL
-```
 
 ---
 
@@ -141,7 +106,7 @@ ETS2/ATS Game
 ![Fastify](https://img.shields.io/badge/Fastify-000000?style=flat-square&logo=fastify&logoColor=white)
 ![Prisma](https://img.shields.io/badge/Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat-square&logo=postgresql&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-6DA55F?style=flat-square&logo=node.js&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
 
 </td>
 <td valign="top" width="25%">
@@ -166,18 +131,25 @@ ETS2/ATS Game
 
 ---
 
+## 📸 Screenshots
+
+> Screenshots available in [`/screenshots`](./screenshots). Full preview coming with the closed beta release.
+
+---
+
 ## 🗺️ Roadmap
 
 | Status | Feature |
-|--------|---------|
-| ✅ Done | Desktop client (Tauri 2) — telemetry, job tracking, anti-cheat |
-| ✅ Done | Web platform — VTC management, ranks, webhooks, badges |
-| ✅ Done | API — sessions, Discord OAuth2, admin panel |
-| ✅ Done | Discord bot — notifications, leaderboards |
-| ✅ Done | Legal pages (GDPR/RODO compliant) |
-| 🔄 In Progress | Interactive game map (ETS2 + ProMods, MapLibre GL) |
-| 🔄 In Progress | Route GPS tracking & visualization |
-| 🔄 In Progress | Anti-cheat v2 (position-based suspicion score) |
+|--------|--------|
+| ✅ Done | Desktop client — telemetry, job tracking, state machine, anti-cheat |
+| ✅ Done | Web platform — VTC management, ranks, webhooks, badges, economy |
+| ✅ Done | API — sessions, Discord OAuth2, admin panel, Redis caching |
+| ✅ Done | Discord bot — verification, notifications, announcements |
+| ✅ Done | Game map — ETS2/ATS tile rendering with route overlay |
+| ✅ Done | Legal pages — GDPR/RODO compliant Terms & Privacy |
+| 🔄 In Progress | Route GPS tracking — full polyline per trip, speed gradient |
+| 🔄 In Progress | Anti-cheat v2 — position-based suspicion score |
+| 🔄 In Progress | ProMods map support |
 | 📅 Planned | Closed Beta — Q3 2026 |
 | 📅 Planned | Public launch — 2026 |
 
@@ -185,22 +157,13 @@ ETS2/ATS Game
 
 ## 📋 Changelog
 
-### v0.9 — Pre-Beta *(current)*
-- Desktop client ~90% complete
-- Anti-cheat: suspicious job detection
-- Encrypted local storage (AES-256-GCM, Windows DPAPI)
-- Job suspend/resume system
-- Admin panel + SystemRole
-- Company settings UI (8 tabs), country flags, heartbeat
-- Discord OAuth2 full flow
-- Legal pages (Terms of Service, Privacy Policy)
-- Registration disabled (closed beta screen)
+Full changelogs are in the [`/CHANGELOG`](./CHANGELOG) folder.
 
-### v0.8
-- Auth migrated from JWT to httpOnly cookie sessions
-- Prisma schema: CompanyRank, CompanyWebhook, CompanyBadge, CompanyNameHistory
-- Discord/Steam/TruckersMP IDs immutable once set
-- SEO overhaul: structured data, sitemap, robots.txt, canonical fix
+| Version | Date | Highlights |
+|---------|------|------------|
+| [v0.9.x](./CHANGELOG/v0.9.x.md) | June 2026 | Game map, route visualization, telemetry pipeline refactor, Turnstile, VPS hardening |
+| [v0.8.x](./CHANGELOG/v0.8.x.md) | May 2026 | Invitation system, role hierarchy, Redis, economy dashboard, email templates |
+| [v0.7.x](./CHANGELOG/v0.7.x.md) | April 2026 | Discord bot, httpOnly auth, company settings, PM2 infra, legal pages |
 
 ---
 
@@ -213,19 +176,12 @@ ETS2/ATS Game
 
 ---
 
-## 📸 Screenshots
-
-> Screenshots coming with the closed beta release.
-
----
-
 ## 🤝 Community
 
 OmniRoute is built for the Polish VTC community but supports English from day one.
 
 - 🌐 **Website:** [omniroute.cloud](https://omniroute.cloud)
-- 💬 **Discord:** coming soon
-- 📧 **Contact:** [omniroute.cloud/contact](https://omniroute.cloud/contact)
+- 💬 **Discord:** [discord.omniroute.cloud](https://discord.omniroute.cloud)
 
 ---
 
