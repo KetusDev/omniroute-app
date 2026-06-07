@@ -194,6 +194,6 @@ All rights reserved © 2026 OmniRoute / KetusDev.
 
 <div align="center">
 
-Built with ❤️ by [KetusDev](https://github.com/KetusDev) · [ketus.dev](https://ketus.dev)
+Built by [KetusDev](https://github.com/KetusDev) · [ketus.dev](https://ketus.dev)
 
 </div>
