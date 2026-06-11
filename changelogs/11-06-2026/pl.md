@@ -24,34 +24,33 @@
 
 | | Description |
 | :--- | :--- |
-| ![feat](https://img.shields.io/badge/feat--7C3AED?style=flat-square) | Dodano plugin opener do Desktop do otwierania zewnętrznych linków, wstrzymywanie checkpointów przy pauzie śledzenia. |
-| ![feat](https://img.shields.io/badge/feat--7C3AED?style=flat-square) | Wsparcie skrótu F7 w UI trackera w Desktop 0.3.12. |
+| ![feat](https://img.shields.io/badge/feat--7C3AED?style=flat-square) | Desktop: wtyczka opener do linków zewnętrznych; zawieszanie checkpointów w trakcie pauzy śledzenia. |
+| ![feat](https://img.shields.io/badge/feat--7C3AED?style=flat-square) | Web: dodanie Cloudflare Turnstile przy logowaniu i rejestracji (przekazywanie IP, reset przy błędach, ochrona przed podwójnym wysłaniem, obsługa limitu 429). |
 
 ### Naprawiono
 
 | | Description |
 | :--- | :--- |
-| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Poprawiono walidację zleceń, pipeline ich przesyłania oraz śledzenie tras w Desktop (SP i TruckersMP). |
-| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Naprawiono warstwę transportu w Desktop 0.3.8 i automatyczne usuwanie przestarzałych zleceń po odłączeniu gry. |
-| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Korekta teleportów promów i pociągów: prawidłowe commitowanie tras ze specjalnymi zdarzeniami oraz polem drivableKm. |
-| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Wykrywanie podejrzanych zleceń z odometrem poniżej 90% planowanego dystansu. |
-| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Poprawiono klasyfikator dostaw i śledzenie przychodów, eliminując fałszywe dostawy z TruckersMP. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Desktop: usprawniona walidacja zleceń, pipeline zgłoszeń i śledzenie tras (SP + TruckersMP). |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Desktop v0.3.8: poprawki warstwy transportowej, automatyczne usuwanie starych zleceń po rozłączeniu z gry. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Desktop v0.3.12: obsługa skrótu F7 w UI trackera. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Teleport promem i pociągiem: obsługa pola drivableKm i zdarzeń SCS special_events — poprawne zapisy tras; flaga podejrzane przy dystansie poniżej 90% planowanego. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Poprawki w klasyfikacji dostaw i rozliczaniu przychodów dla fałszywych dostaw w TruckersMP. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Web: bezpieczny proxy pobierania release z GitHub (SSRF-safe); sanitizacja HTML w edytorze bloków firmy. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | API: opcjonalne uwierzytelnienie na wybranych endpointach zleceń; zaostrzenie widoczności zleceń publicznych i reguł zaproszeń do firmy. |
 
 ### Zmiany
 
 | | Description |
 | :--- | :--- |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Pierwszy oficjalny changelog OmniRoute za okres 7–9 czerwca 2026. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Web: sesje cookie-only w Next.js auth middleware – dashboard przestał przechowywać tokeny bearer po stronie klienta. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Web: wdrożono Cloudflare Turnstile na endpointach logowania i rejestracji z ochroną przed podwójnym wysłaniem i obsługą limitów 429. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Web: SSRF-safe proxy dla pobierania release’ów z GitHub oraz sanitizacja HTML w edytorze bloków firm. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: wprowadzono checksum v2 dla przesyłania zleceń i serwerową ocenę podejrzanych zleceń. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: zastosowano wersjonowanie JWT sesji – unieważnienie wszystkich sesji po zmianie hasła. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: opcjonalna autoryzacja na wybranych endpointach zleceń, zaostrzone zasady widoczności publicznych zleceń i zaproszeń firmowych. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: wzmocnione zabezpieczenia przed SSRF na uploadach, webhookach i endpointach admina; szybka walidacja sekretów produkcyjnych. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API i Desktop: utwardzono OAuth Discorda; tokeny API nie są już przechowywane zaszyfrowane w bazie. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Desktop: zabezpieczono powierzchnię IPC, klienta API oraz lokalne przechowywanie sekretów (secure_store). |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Infrastruktura: audyt i poprawki bezpieczeństwa VPS; wzmocnione uprawnienia środowiskowe skryptu deploy.sh. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Pierwszy oficjalny changelog platformy OmniRoute, zakres commitów 7–9.06.2026. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Web: sesje cookie-only w Next.js auth middleware — dashboard nie przechowuje tokenów bearer po stronie klienta. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: wprowadzenie checksum v2 dla zgłoszeń zleceń i serwerowa ocena podejrzanych. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: weryfikacja JWT sesji — unieważnianie wszystkich sesji po zmianie hasła. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: zabezpieczenia SSRF na uploadach, webhookach i endpointach administracyjnych; walidacja sekretów produkcyjnych fail-fast. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API i desktop: wzmocnienie OAuth Discord; tokeny API nie są już przechowywane zaszyfrowane w bazie. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Desktop: wzmocnienie IPC, klienta API i lokalnego magazynu sekretów (secure_store). |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Infrastruktura: audyt bezpieczeństwa VPS i skrypty naprawcze; zaostrzenie uprawnień środowiska deploy.sh. |
 
 ---
 
