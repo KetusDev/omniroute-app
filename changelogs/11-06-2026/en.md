@@ -24,34 +24,33 @@
 
 | | Description |
 | :--- | :--- |
-| ![feat](https://img.shields.io/badge/feat--7C3AED?style=flat-square) | Add desktop opener plugin for external links; suspend checkpoints when tracking is paused. |
-| ![feat](https://img.shields.io/badge/feat--7C3AED?style=flat-square) | Add F7 shortcut support in tracker UI (Desktop 0.3.12). |
+| ![feat](https://img.shields.io/badge/feat--7C3AED?style=flat-square) | Add desktop opener plugin for external links; suspend checkpoints during tracking pause. |
+| ![feat](https://img.shields.io/badge/feat--7C3AED?style=flat-square) | Add Cloudflare Turnstile on login and register (client IP forwarded, error reset, double-submit protection, 429 handling). |
 
 ### Fixed
 
 | | Description |
 | :--- | :--- |
-| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Improve job validation, submission pipeline and route tracking in Desktop (SP + TruckersMP). |
-| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Fix Desktop 0.3.8 transport layer and auto-prune stale jobs after game disconnect. |
-| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Fix ferry and train teleports: commit routes correctly with special events and drivableKm field. |
-| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Flag suspicious jobs with driven distance below 90% of planned odometer. |
-| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Fix delivery classifier and income tracking to exclude false deliveries on TruckersMP. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Improve desktop job validation, submission pipeline, and route tracking (SP + TruckersMP). |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Desktop v0.3.8: fix transport layer, auto-prune stale jobs after game disconnect. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Desktop v0.3.12: add F7 shortcut support in tracker UI. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Handle ferry/train teleports with drivableKm and SCS special_events — commit routes correctly; flag suspicious if driven distance <90% expected. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Fix delivery classification and income tracking for TruckersMP false deliveries. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | Web: implement SSRF-safe GitHub release download proxy; sanitize HTML in company block editor. |
+| ![fix](https://img.shields.io/badge/fix--10B981?style=flat-square) | API: add optional auth on selected job endpoints; tighten public job visibility and company invitation rules. |
 
 ### Changed
 
 | | Description |
 | :--- | :--- |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Publish first official OmniRoute changelog for 7–9 June 2026. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Web: implement cookie-only sessions with Next.js auth middleware; dashboard no longer stores bearer tokens client-side. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Web: add Cloudflare Turnstile on login and register endpoints with client IP forwarding, error resets, double-submit protection and 429 handling. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Web: add SSRF-safe GitHub release download proxy; sanitize HTML in company block editor. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: introduce checksum v2 for job submissions and server-side suspicion scoring. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: apply JWT session versioning; invalidate all sessions after password reset. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: add optional auth on selected job endpoints; tighten public job visibility and company invitation rules. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: add SSRF protection on uploads, webhooks and admin endpoints; fail-fast validation of production secrets. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API and Desktop: harden Discord OAuth; stop storing API tokens encrypted in database. |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Desktop: harden IPC surface, API client, and local secret storage (secure_store). |
-| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Infrastructure: conduct VPS security audit and remediation; harden deploy.sh environment permissions. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Publish first official OmniRoute platform changelog, scope: commits 7–9 June 2026. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Web: migrate to cookie-only sessions with Next.js auth middleware — dashboard no longer stores bearer tokens client-side. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: deploy checksum v2 for job submissions and server-side suspicion scoring. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: JWT session version — invalidate all sessions on password reset. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | API: add SSRF guards on uploads, webhooks and admin endpoints; fail-fast production secrets validation. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Harden Discord OAuth on API and desktop; stop storing API tokens encrypted in database. |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Harden desktop IPC surface, API client, and local secret storage (secure_store). |
+| ![chore](https://img.shields.io/badge/chore--64748B?style=flat-square) | Infrastructure: VPS security audit and remediation scripts; tighten deploy.sh environment permissions. |
 
 ---
 
