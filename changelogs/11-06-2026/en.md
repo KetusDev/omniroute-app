@@ -30,13 +30,13 @@
 
 | | Description |
 | :--- | :--- |
-| ![fix](https://img.shields.io/badge/fix-10B981?style=flat-square) | Prevent false deliveries in TruckersMP from committing jobs |
+| ![fix](https://img.shields.io/badge/fix-10B981?style=flat-square) | Prevent job commit on false delivery in TruckersMP |
 
 ### Changed
 
 | | Description |
 | :--- | :--- |
-| ![chore](https://img.shields.io/badge/chore-64748B?style=flat-square) | Refactor job_tracker.rs into modular structure under src-tauri/src |
+| ![chore](https://img.shields.io/badge/chore-64748B?style=flat-square) | Refactor job_tracker.rs into modular structure in src-tauri/src |
 
 ---
 
