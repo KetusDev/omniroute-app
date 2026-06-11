@@ -24,19 +24,19 @@
 
 | | Description |
 | :--- | :--- |
-| ![feat](https://img.shields.io/badge/feat-7C3AED?style=flat-square) | Wykrywanie teleportów promowych i kolejowych na podstawie flag special_events SDK SCS |
+| ![feat](https://img.shields.io/badge/feat-7C3AED?style=flat-square) | Wykrywanie teleportów promowych i kolejowych na podstawie flag special_events w SCS SDK |
 
 ### Naprawiono
 
 | | Description |
 | :--- | :--- |
-| ![fix](https://img.shields.io/badge/fix-10B981?style=flat-square) | Nieprawdziwe dostawy w TruckersMP nie powodują już zatwierdzenia zlecenia |
+| ![fix](https://img.shields.io/badge/fix-10B981?style=flat-square) | Brak zatwierdzania zlecenia przy fałszywym dostarczeniu w TruckersMP |
 
 ### Zmiany
 
 | | Description |
 | :--- | :--- |
-| ![chore](https://img.shields.io/badge/chore-64748B?style=flat-square) | Przebudowa job_tracker.rs na bardziej modułową strukturę w src-tauri/src |
+| ![chore](https://img.shields.io/badge/chore-64748B?style=flat-square) | Refaktoryzacja job_tracker.rs do modułowej struktury w src-tauri/src |
 
 ---
 
