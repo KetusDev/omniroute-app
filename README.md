@@ -179,6 +179,11 @@ Changelogs are published regularly in three places simultaneously: here on GitHu
 
 | Date | Version | Highlights |
 |------|---------|------------|
+| [28 Jul 2026](./changelogs/28-07-2026/en.md) | v0.5.2 | Dashboard hub redesign, telemetry cockpit, fullscreen route map zoom, game logos |
+| [21 Jul 2026](./changelogs/21-07-2026/en.md) | v0.5.1 | Ferry route handling, route resume persistence, anti-cheat and economy fixes |
+| [24 Jun 2026](./changelogs/24-06-2026/en.md) | v0.5.0 | Profile and settings revamp, support center, admin tools, rankings and company browsing |
+| [20 Jun 2026](./changelogs/20-06-2026/en.md) | v0.4.2 | Company and profile upgrades, monthly limits, avatar/banner customization, numeric URLs |
+| [18 Jun 2026](./changelogs/18-06-2026/en.md) | v0.4.1 | Delivery page flags, route checkpoint persistence, delivery and economy fixes |
 | [11 Jun 2026](./changelogs/11-06-2026/en.md) | v0.4.0 | Ferry/train teleport handling, TruckersMP delivery fixes, Cloudflare Turnstile, security hardening |
 
 ---
